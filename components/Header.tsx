@@ -4,6 +4,7 @@ import Button from "./Button";
 import { useEffect, useState } from "react";
 import SideBar from "./SideBar";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Header = () => {
   const [mobile, setMobile] = useState<boolean>(false);
@@ -52,9 +53,9 @@ const Header = () => {
           animate={{ opacity: scrolled ? 0 : 1, y: scrolled ? -20 : 0, pointerEvents: scrolled ? "none" : "auto" }}
           transition={{ duration: 0.3 }}
         >
-          <h1 className="px-4 py-2 rounded-full shadow-[0_0_10px_#fff0f0] border border-white/30 cursor-pointer duration-150">
+          <Link id="easter-egg-logo" href={"/"} className="px-4 py-2 rounded-full shadow-[0_0_10px_#fff0f0] border border-white/30 cursor-pointer duration-150 select-none">
             {logo}
-          </h1>
+          </Link>
         </motion.div>
 
         {/* Navlinks */}

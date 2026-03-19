@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { CgScrollV } from "react-icons/cg";
 import { FiArrowRight } from "react-icons/fi";
@@ -6,11 +7,22 @@ import { FiArrowRight } from "react-icons/fi";
 const Hero = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-white dark:bg-zinc-950">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.05)_0%,transparent_50%)]" />
+      {/* Background flairs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-40 -right-40 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-sky-500/20 dark:bg-sky-500/10 rounded-full blur-[120px] z-10"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute -bottom-40 -left-40 w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-purple-500/20 dark:bg-purple-500/10 rounded-full blur-[120px] z-10"
+        />
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
         <div className="flex flex-col items-center text-center">
-
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -71,6 +83,7 @@ const Hero = () => {
               <CgScrollV size={20} />
             </motion.div>
           </div>
+
         </div>
       </div>
     </section>
