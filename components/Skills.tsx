@@ -48,7 +48,7 @@ const Skills = () => {
   //
   // Three layouts let the honeycomb widen on larger screens.
   const responsiveLayouts = [
-    { id: 'mobile',  className: 'flex sm:hidden',       rows: getHoneycombRows(skillsData, [5, 6]) },
+    { id: 'mobile',  className: 'flex sm:hidden',       rows: getHoneycombRows(skillsData, [4, 5]) },
     { id: 'tablet',  className: 'hidden sm:flex lg:hidden', rows: getHoneycombRows(skillsData, [6, 7]) },
     { id: 'desktop', className: 'hidden lg:flex',        rows: getHoneycombRows(skillsData, [7, 6]) },
   ];
