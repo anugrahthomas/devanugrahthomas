@@ -54,7 +54,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="w-full py-16 sm:py-24 relative overflow-hidden flex flex-col items-center justify-center">
+    // Fix 1: Remove overflow-hidden from section — it clips the top/bottom hex rows on mobile.
+    // Use overflow-x-clip only so horizontal bleed is still contained without cutting vertical content.
+    <section id="skills" className="w-full py-20 sm:py-28 relative overflow-x-clip flex flex-col items-center justify-center">
       <div className="absolute inset-0 max-w-7xl mx-auto -z-10">
         <div className="absolute right-0 top-0 w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute left-0 bottom-0 w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -77,15 +79,12 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="w-full flex flex-col items-center justify-center pt-4">
+        <div className="w-full flex flex-col items-center justify-center pt-4 pb-6">
           {responsiveLayouts.map((layout) => (
             <div key={layout.id} className={`${layout.className} flex-col items-center justify-center w-full`}>
               {layout.rows.map((row, rowIndex) => (
                 <div
                   key={`${layout.id}-${rowIndex}`}
-                  // Apply negative top margin from the 2nd row onwards to interlock hexagons.
-                  // Values match 25 % of the bounding-box height at each breakpoint.
-                  style={rowIndex > 0 ? undefined : undefined}
                   className={`flex flex-row justify-center flex-nowrap w-full${rowIndex > 0 ? ' -mt-[20px] sm:-mt-[26px] md:-mt-[30px]' : ''}`}
                 >
                   {row.map((skill, colIndex) => {
@@ -107,36 +106,43 @@ const Skills = () => {
                         key={`${layout.id}-${name}-${colIndex}`}
                         className="relative w-[70px] h-[81px] sm:w-[88px] sm:h-[102px] md:w-[104px] md:h-[120px] flex items-center justify-center shrink-0"
                       >
+                        {/* Fix 2: Entry animation via Framer Motion (runs once, fine).
+                            Hover replaced with pure CSS `group-hover:scale-105` — GPU-composited,
+                            zero JS overhead on production vs. Framer Motion spring on each hover. */}
                         <motion.div
                           initial={{ opacity: 0, scale: 0.5 }}
                           whileInView={{ opacity: 1, scale: 0.92 }}
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.4,
-                            delay: absoluteIndex * 0.05,
+                            delay: absoluteIndex * 0.04,
                             type: 'spring',
                             stiffness: 120,
                           }}
-                          whileHover={{ scale: 1.05, zIndex: 10 }}
                           style={{ clipPath: hexagonClipPath }}
-                          className="group absolute inset-0 cursor-pointer bg-neutral-200 dark:bg-neutral-800 flex flex-col items-center justify-center transition-all duration-300"
+                          className="group absolute inset-0 cursor-pointer bg-neutral-200 dark:bg-neutral-800 flex flex-col items-center justify-center
+                                     transition-transform duration-200 ease-out hover:scale-[1.08] hover:z-10 will-change-transform"
                         >
                           <div
                             className="absolute inset-[2px] bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center justify-center z-10 transition-colors duration-300"
                             style={{ clipPath: hexagonClipPath }}
                           >
-                            <div className="relative z-20 transition-all duration-500 transform group-hover:-translate-y-1 sm:group-hover:-translate-y-2 mt-2 sm:mt-0">
-                              <div className="text-neutral-400 dark:text-neutral-500 group-hover:hidden text-[1.4rem] sm:text-[2rem] md:text-[2.6rem]">
+                            {/* Icon: greyscale by default, coloured on hover via opacity crossfade */}
+                            <div className="relative z-20 mt-2 sm:mt-0">
+                              <div className="text-neutral-400 dark:text-neutral-500 text-[1.4rem] sm:text-[2rem] md:text-[2.6rem]
+                                              transition-all duration-300 group-hover:-translate-y-1 sm:group-hover:-translate-y-2 group-hover:opacity-0 group-hover:scale-90">
                                 <Icon />
                               </div>
                               <div
-                                className="hidden group-hover:block text-[1.4rem] sm:text-[2rem] md:text-[2.6rem]"
+                                className="absolute inset-0 flex items-center justify-center text-[1.4rem] sm:text-[2rem] md:text-[2.6rem]
+                                           opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-y-1 sm:group-hover:-translate-y-2
+                                           transition-all duration-300"
                                 style={{ color: iconColor }}
                               >
                                 <Icon />
                               </div>
                             </div>
-                            <span className="absolute bottom-2 sm:bottom-3 md:bottom-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-[8px] sm:text-[9px] md:text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 pointer-events-none text-center px-1 max-w-full leading-none">
+                            <span className="absolute bottom-2 sm:bottom-3 md:bottom-4 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 text-[8px] sm:text-[9px] md:text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 pointer-events-none text-center px-1 max-w-full leading-none">
                               {name}
                             </span>
                           </div>
