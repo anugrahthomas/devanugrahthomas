@@ -85,9 +85,9 @@ const About = () => {
             <div className="absolute bottom-[-20%] left-[-20%] w-[60%] h-[60%] rounded-full bg-blue-500/10 blur-3xl transition-transform duration-700 group-hover:scale-110" />
 
             <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-              <div className="w-full max-w-sm lg:max-w-md bg-zinc-900/95 rounded-xl overflow-hidden shadow-2xl border border-zinc-700/50 backdrop-blur-md transition-transform duration-500 group-hover:scale-[1.02]">
+              <div className="w-full h-full max-h-[300px] flex flex-col max-w-sm lg:max-w-md bg-zinc-900/95 rounded-xl shadow-2xl border border-zinc-700/50 backdrop-blur-md transition-transform duration-500 group-hover:scale-[1.02] overflow-hidden">
                 {/* Terminal Header */}
-                <div className="flex items-center px-4 py-3 bg-zinc-800/80 border-b border-zinc-700/50">
+                <div className="flex shrink-0 items-center px-4 py-3 bg-zinc-800/80 border-b border-zinc-700/50">
                   <div className="flex space-x-2">
                     <div className="w-3 h-3 rounded-full bg-red-500/90 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500/90 shadow-[0_0_5px_rgba(234,179,8,0.5)]"></div>
@@ -99,26 +99,26 @@ const About = () => {
                 </div>
 
                 {/* Terminal Body */}
-                <div className="p-5 sm:p-6 text-sm sm:text-base font-mono leading-relaxed overflow-x-auto text-left">
-                  <div className="text-zinc-300">
+                <div className="flex-1 p-5 sm:p-6 text-sm sm:text-base font-mono leading-relaxed overflow-y-auto overflow-x-auto text-left">
+                  <div className="text-zinc-300 whitespace-pre">
                     <span className="text-pink-400">const</span>{" "}
                     <span className="text-blue-400">developer</span> = {"{"}
                   </div>
-                  <div className="pl-4 sm:pl-6 text-zinc-300">
+                  <div className="pl-4 sm:pl-6 text-zinc-300 whitespace-pre-wrap">
                     name:{" "}
                     <span className="text-yellow-300">
                       &quot;Anugrah Thomas&quot;
                     </span>
                     ,
                   </div>
-                  <div className="pl-4 sm:pl-6 text-zinc-300">
+                  <div className="pl-4 sm:pl-6 text-zinc-300 whitespace-pre-wrap">
                     role:{" "}
                     <span className="text-emerald-400">
                       &quot;Full Stack Developer&quot;
                     </span>
                     ,
                   </div>
-                  <div className="pl-4 sm:pl-6 text-zinc-300">
+                  <div className="pl-4 sm:pl-6 text-zinc-300 whitespace-pre-wrap leading-tight sm:leading-relaxed">
                     skills: [
                     <span className="text-yellow-300">&quot;React&quot;</span>,{" "}
                     <span className="text-yellow-300">&quot;Next.js&quot;</span>
@@ -129,7 +129,7 @@ const About = () => {
                     , <span className="text-red-400">&quot;Node&quot;</span>,{" "}
                     <span className="text-red-400">&quot;MongoDB&quot;</span>],
                   </div>
-                  <div className="pl-4 sm:pl-6 text-zinc-300">
+                  <div className="pl-4 sm:pl-6 text-zinc-300 whitespace-pre-wrap mt-1 sm:mt-0">
                     passion:{" "}
                     <span className="text-emerald-400">
                       &quot;Crafting beautiful UI/UX&quot;
@@ -137,7 +137,7 @@ const About = () => {
                     ,
                   </div>
                   <div className="text-zinc-300">{"};"}</div>
-                  <div className="mt-4 text-zinc-300">
+                  <div className="mt-4 text-zinc-300 whitespace-pre">
                     <span className="text-pink-400">export default</span>{" "}
                     <span className="text-blue-400">developer</span>;
                   </div>
