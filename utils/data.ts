@@ -219,7 +219,7 @@ export const certifications = [
         gradient: "from-gray-500/20 to-slate-600/20",
         border: "border-gray-500/30",
         badge: "eth",
-        link: "https://certify.codesprint.in/verify/Y4zpdomL",
+        link: "https://drive.google.com/file/d/1unnKfX_qgu6Wgz3QvvIs3sQhVJ7a6_-8/view?usp=drive_link",
     },
     {
         id: 3,

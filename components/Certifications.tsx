@@ -58,9 +58,19 @@ const Certifications = () => {
                 {/* Coverflow Carousel */}
                 <div className="relative w-full max-w-5xl flex flex-col items-center">
                     {/* Card Stage */}
-                    <div
-                        className="relative w-full flex items-center justify-center"
+                    <motion.div
+                        className="relative w-full flex items-center justify-center touch-pan-y"
                         style={{ height: "340px", perspective: "1200px" }}
+                        onPanEnd={(e, info) => {
+                            const { offset, velocity } = info;
+                            if (Math.abs(offset.x) > Math.abs(offset.y)) {
+                                if (offset.x < -40 || velocity.x < -500) {
+                                    next();
+                                } else if (offset.x > 40 || velocity.x > 500) {
+                                    prev();
+                                }
+                            }
+                        }}
                     >
                         {certifications.map((cert, index) => {
                             const style = getCardStyle(index);
@@ -132,7 +142,7 @@ const Certifications = () => {
                                 </motion.div>
                             );
                         })}
-                    </div>
+                    </motion.div>
 
                     {/* Navigation arrows + dot indicators */}
                     <div className="flex items-center gap-6 mt-10">
