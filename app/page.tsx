@@ -37,7 +37,7 @@ const Home = () => {
         <Projects />
         <Skills />
         <Certifications />
-        {/* <Journey /> */}
+        <Journey />
         <Education />
         <Contact />
       </main>
