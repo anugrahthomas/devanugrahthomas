@@ -34,7 +34,7 @@ const Home = () => {
       <main className="flex-grow flex flex-col gap-12 sm:gap-16 lg:gap-16 lg:mt-24 mt-16 relative z-0">
         <Hero />
         <About />
-        {/* <Projects /> */}
+        <Projects />
         <Skills />
         <Certifications />
         {/* <Journey /> */}
