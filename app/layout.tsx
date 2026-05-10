@@ -27,7 +27,9 @@ export const metadata: Metadata = {
     "Node.js",
     "Portfolio",
   ],
-  authors: [{ name: "Anugrah Thomas", url: "https://github.com/anugrahthomas" }],
+  authors: [
+    { name: "Anugrah Thomas", url: "https://github.com/anugrahthomas" },
+  ],
   creator: "Anugrah Thomas",
   openGraph: {
     type: "website",
@@ -40,8 +42,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Anugrah Thomas — Full Stack Developer",
-    description: "Full Stack Developer building fast, scalable, and beautiful web apps.",
+    description:
+      "Full Stack Developer building fast, scalable, and beautiful web apps.",
     creator: "@_anugrahthomas",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png", // optional for iOS
+    shortcut: "/favicon-32x32.png",
   },
   robots: {
     index: true,

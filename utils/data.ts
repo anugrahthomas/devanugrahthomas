@@ -6,6 +6,9 @@ import { SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiFramer, SiNes
 
 export type ProjectTag = "All" | "Full Stack" | "Frontend" | "Backend" | "DevOps" | "Open Source";
 
+export const domain = "https://anugrahthomas.me"
+export const siteMap = `${domain}/sitemap.xml`
+
 export const projectsData = [
     {
         id: 1,
